@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function (props) {
-
+  console.log("player props", props);
   const currentSong = props.currentSong;
   const isPlaying = props.isPlaying;
   const progress = props.progress;

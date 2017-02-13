@@ -14,7 +14,7 @@ export default function(props) {
           isPlaying={props.isPlaying}
           toggle={props.toggle}
         />
-      // </div>
+      </div>
     </div>
   )
 }
