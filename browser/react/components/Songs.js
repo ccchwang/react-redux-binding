@@ -5,7 +5,7 @@ export default function (props) {
   const songs = props.songs;
   const currentSong = props.currentSong;
   const isPlaying = props.isPlaying;
-  const toggle = props.toggleOne;
+  const toggle = props.toggle;
 
   return (
     <table className='table'>
