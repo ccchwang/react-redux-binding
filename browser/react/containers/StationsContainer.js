@@ -15,7 +15,7 @@ const convertSongsToStations = (songs) => {
 export default connect(
   (state) => {
     return {
-      stations: convertSongsToStations(state.playlists.songs)
+      stations: state.genre.genres
     }
   }
 )(Stations)

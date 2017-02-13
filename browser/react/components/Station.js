@@ -12,7 +12,7 @@ export default function(props) {
           songs={props.songs}
           currentSong={props.currentSong}
           isPlaying={props.isPlaying}
-          toggle={props.toggle}
+          toggleOne={props.toggle}
         />
       </div>
     </div>

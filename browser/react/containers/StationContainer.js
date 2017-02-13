@@ -2,17 +2,16 @@ import {connect} from 'react-redux'
 import {toggleSong} from '../action-creators/player.js'
 import Station from '../components/Station'
 
-const getSongs = (songs, genre) => {
+const convertSongs = (songs) => {
   return songs.filter(song => {
-    song.audioUrl = `/api/songs/${song.id}/audio`;
-    return song.genre === genre
+    return song.audioUrl = `/api/songs/${song.id}/audio`;
   })
 }
 
 export default connect(
-  (state, ownProps) => {
+  (state) => {
     return {
-      songs: getSongs(state.playlists.songs, ownProps.params.genre),
+      songs: convertSongs(state.genre.genreSongs),
       currentSong: state.player.currentSong,
       isPlaying: state.player.isPlaying
     }

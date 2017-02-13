@@ -9,6 +9,7 @@ router.use('/albums', require('./albums'));
 router.use('/playlists', require('./playlists'));
 router.use('/songs', require('./songs'));
 router.use('/lyrics', require('./lyrics'));
+router.use('/genre', require('./genre'));
 
 // Make sure this is after all of
 // the registered routes!

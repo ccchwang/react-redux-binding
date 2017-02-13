@@ -1,9 +1,10 @@
 'use strict';
 
 const db = require('../db');
+const Genre = require('./genre')
 const DataTypes = db.Sequelize;
 
-module.exports = db.define('song', {
+const Song = db.define('song', {
   name: {
     type: DataTypes.STRING(1e4), // eslint-disable-line new-cap
     allowNull: false,
@@ -37,5 +38,7 @@ module.exports = db.define('song', {
       delete plain.url;
       return plain;
     }
-  }
+  },
 });
+
+module.exports = Song;

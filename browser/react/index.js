@@ -23,19 +23,22 @@ import store from './store';
 import {receiveAlbums, getAlbumById} from './action-creators/albums';
 import {receiveArtists, getArtistById} from './action-creators/artists';
 import {receivePlaylists, getPlaylistById, loadAllSongs } from './action-creators/playlists';
+import {receiveGenre, loadStationSongs } from './action-creators/genre';
 
 const onAppEnter = function () {
 
   Promise.all([
     axios.get('/api/albums'),
     axios.get('/api/artists'),
-    axios.get('/api/playlists')
+    axios.get('/api/playlists'),
+    axios.get('/api/genre')
   ])
     .then(responses => responses.map(r => r.data))
-    .then(([albums, artists, playlists]) => {
+    .then(([albums, artists, playlists, genre]) => {
       store.dispatch(receiveAlbums(albums));
       store.dispatch(receiveArtists(artists));
       store.dispatch(receivePlaylists(playlists));
+      store.dispatch(receiveGenre(genre));
     });
 
 };
@@ -53,8 +56,8 @@ const onPlaylistEnter = function (nextRouterState) {
   store.dispatch(getPlaylistById(playlistId));
 };
 
-const onStationsEnter = function (nextRouterState) {
-  store.dispatch(loadAllSongs());
+const onStationEnter = function (nextRouterState) {
+  store.dispatch(loadStationSongs(nextRouterState.params.genreId));
 };
 
 ReactDOM.render(
@@ -71,8 +74,8 @@ ReactDOM.render(
         <Route path="/new-playlist" component={NewPlaylistContainer}/>
         <Route path="/playlists/:playlistId" component={PlaylistContainer} onEnter={onPlaylistEnter}/>
         <Route path="/lyrics" component={LyricsContainer} />
-        <Route path="/stations" onEnter={onStationsEnter}>
-          <Route path="/stations/:genre" component={StationContainer}/>
+        <Route path="/stations">
+          <Route path="/stations/:genreId" component={StationContainer} onEnter={onStationEnter}/>
           <IndexRoute component={StationsContainer}/>
         </Route>
         <IndexRedirect to="/albums"/>

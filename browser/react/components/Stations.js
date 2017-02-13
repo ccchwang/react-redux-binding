@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 
 
 export default function(props) {
-  const stations = Object.keys(props.stations);
-
+ // const stations = Object.keys(props.stations);
+console.log('stations props', props)
   return(
 
     <div>
@@ -12,10 +12,10 @@ export default function(props) {
       <div className="list-group">
 
       {
-        stations.map(station => {
+        props.stations.map(station => {
           return (
-            <div className="list-group-item" key={station}>
-              <Link to={`/stations/${station}`}>{station}</Link>
+            <div className="list-group-item" key={station.id}>
+              <Link to={`/stations/${station.id}`}>{station.name}</Link>
 
             </div>
           );
