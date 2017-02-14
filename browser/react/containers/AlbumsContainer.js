@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Albums from '../components/Albums';
 
 export default connect(
-  state=>{
+  state => {
     return {
       albums: state.albums.list
     };

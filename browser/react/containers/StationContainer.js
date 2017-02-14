@@ -3,8 +3,9 @@ import {toggleSong} from '../action-creators/player.js'
 import Station from '../components/Station'
 
 const convertSongs = (songs) => {
-  return songs.filter(song => {
-    return song.audioUrl = `/api/songs/${song.id}/audio`;
+  return songs.map(song => {
+    song.audioUrl = `/api/songs/${song.id}/audio`;
+    return song;
   })
 }
 

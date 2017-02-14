@@ -6,21 +6,18 @@ import AddSong from '../components/AddSong';
 import {loadAllSongs, addSongToPlaylist} from '../action-creators/playlists';
 
 export default connect(
-  state=>{
+  state => {
     return Object.assign({}, state.playlists);
   },
-  dispatch=>{
+  dispatch => {
     return {
-      loadSongs: function(){
-        dispatch(loadAllSongs());
-      },
-      addSongToPlaylist: function(playlistId, songId){
+      loadSongs: () => { dispatch(loadAllSongs()); },
+      addSongToPlaylist: (playlistId, songId) => {
         dispatch(addSongToPlaylist(playlistId, songId))
       }
     };
   }
 )(class extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = Object.assign({
@@ -43,18 +40,13 @@ export default connect(
   }
 
   handleSubmit(evt) {
-
     evt.preventDefault();
-
     const playlistId = this.props.selected.id;
     const songId = this.state.songId;
-
     this.props.addSongToPlaylist(playlistId, songId);
-
   }
 
   render() {
-
     const songs = this.props.songs;
     const error = this.state.error;
 

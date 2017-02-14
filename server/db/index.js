@@ -25,9 +25,8 @@ syncedDbPromise.then(function () {
               name: genre
             }
           })
-          .then((genre) => {
-            console.log('genre~~~', genre[0])
-            song.setStation(genre[0].id)
+          .then(([genre, createdBool]) => {
+            song.setStation(genre.id)
           })
       })
     })

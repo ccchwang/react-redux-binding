@@ -5,10 +5,10 @@ import AUDIO from '../audio';
 import Player from '../components/Player';
 
 export default connect(
-  state=>{
+  state => {
     return Object.assign({}, state.player);
   },
-  dispatch=>{
+  dispatch => {
     return{
       next: function(){
         dispatch(next());

@@ -4,18 +4,17 @@ import Lyrics from '../components/Lyrics';
 import {searchLyrics} from '../action-creators/lyrics';
 
 export default connect(
-  (state, ownProps)=>{
+  (state) => {
     return Object.assign({}, state.lyrics);
   },
-  dispatch=>{
+  (dispatch) => {
     return {
-      submit: function(artistQuery, songQuery){
+      submit: (artistQuery, songQuery) => {
         dispatch(searchLyrics(artistQuery, songQuery));
       }
     };
   }
 )(class extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -33,12 +32,10 @@ export default connect(
   }
 
   handleSubmit(e) {
-    console.log("props in lyricscontainer", this.props);
     e.preventDefault();
     if (this.state.artistQuery && this.state.songQuery) {
       this.props.submit(this.state.artistQuery, this.state.songQuery);
     }
-
   }
 
   render() {
@@ -51,5 +48,4 @@ export default connect(
         handleSubmit={this.handleSubmit} />
     );
   }
-
 });

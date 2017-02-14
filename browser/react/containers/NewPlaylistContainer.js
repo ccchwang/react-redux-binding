@@ -3,18 +3,15 @@ import {connect} from 'react-redux';
 import NewPlaylist from '../components/NewPlaylist';
 import {addNewPlaylist} from '../action-creators/playlists';
 
-
-export default connect(
-  null,
-  dispatch =>{
+export default connect( null,
+  dispatch => {
     return {
       submit: function(value){
         dispatch(addNewPlaylist(value));
       }
     };
   }
-)(
-class extends React.Component {
+)(class extends React.Component {
 
   constructor(props) {
     super(props);
@@ -35,9 +32,7 @@ class extends React.Component {
   }
 
   handleSubmit(evt) {
-
     evt.preventDefault();
-    console.log("newplay", this.props);
     this.props.submit(this.state.inputValue);
 
     this.setState({
@@ -48,7 +43,6 @@ class extends React.Component {
   }
 
   render() {
-
     const dirty = this.state.dirty;
     const inputValue = this.state.inputValue;
     let warning = '';
