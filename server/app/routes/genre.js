@@ -8,6 +8,7 @@ const urlParse = require('url').parse;
 const models = require('../../db/models');
 const Genre = models.Genre;
 const Song = models.Song;
+const Album = models.Album;
 const request = require('request');
 const musicMetadata = require('musicmetadata')
 const fs = require('fs')
@@ -25,10 +26,11 @@ router.get('/', function (req, res, next) {
 router.get('/:id/songs', function (req, res, next) {
   const genreId = +req.params.id;
 
-  Song.findAll({
+  Song.scope('defaultScope', 'populated').findAll({
     where: {
       stationId: genreId
-    }
+    },
+    include: [Album]
   })
   .then(songs => res.json(songs))
   .catch(next);

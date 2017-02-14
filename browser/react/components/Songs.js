@@ -1,12 +1,10 @@
 import React from 'react';
 
 export default function (props) {
-
   const songs = props.songs;
   const currentSong = props.currentSong;
   const isPlaying = props.isPlaying;
   const toggle = props.toggleOne;
-  console.log("props Song", props);
 
   return (
     <table className='table'>

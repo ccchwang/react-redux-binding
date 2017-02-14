@@ -3,8 +3,6 @@ import { Link } from 'react-router'
 
 
 export default function(props) {
- // const stations = Object.keys(props.stations);
-console.log('stations props', props)
   return(
 
     <div>

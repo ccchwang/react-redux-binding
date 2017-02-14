@@ -3,7 +3,7 @@ import Songs from './Songs'
 
 
 export default function(props) {
-//console.log(props)
+
   return (
     <div>
       <h3>Station Name</h3>
